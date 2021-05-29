@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const usersRouter = require("./routes/api/users");
 const config = require('config');
+const cors = require("cors");
 const app = express();
+app.use(cors())
 // Body parser middleware
 app.use(
     express.urlencoded({
@@ -29,6 +31,11 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", usersRouter);
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+  }
 
 /* //Serve static assets if in production
 if (process.env.NODE_ENV = "production") {

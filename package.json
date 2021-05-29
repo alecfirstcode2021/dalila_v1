@@ -4,7 +4,9 @@
   "description": "Login authentication system using MERN Stack",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "devStart": "nodemon server.js",
     "server": "nodemon server.js",
     "client-install": "npm install --prefix client",
@@ -18,13 +20,15 @@
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.1.0",
     "config": "^3.2.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "validator": "^12.2.0"
+    "validator": "^12.2.0",
+    "if-env": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
