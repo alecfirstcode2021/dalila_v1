@@ -48,13 +48,17 @@ class Register extends Component {
   render() {
     const { errors, name, password, password2, email } = this.state;
     return (
+      
+      <div className="bigcontainer">
+      <iframe src='https://my.spline.design/setuppage1-26562f0bef0903cde358c90d8096b926/' frameborder='0' width='100%' height='100%' title="Background with a bed and computer"></iframe>
+        <div className ="contentcontainer">
       <section className="register">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
               <div className="signup-left">
                 <h4 className="text-capitalize text-center">
-                  Thanks for registering an account with <kbd>DALILA</kbd>
+                  Thanks for registering an account with <kbd>Dalila</kbd>
                 </h4>
               </div>
             </div>
@@ -148,12 +152,14 @@ class Register extends Component {
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-12">
-                      <p>
-                        Already have an account ?
+                      <p class="text-dark">
+                        Already have an account?
+                        <br></br>
                         <Link to="/login" className="text-success">
-                          Login
+                            Login
                         </Link>
                       </p>
+                      
                     </div>
                   </div>
                 </form>
@@ -162,6 +168,9 @@ class Register extends Component {
           </div>
         </div>
       </section>
+      </div>
+      </div>
+      
     );
   }
 }

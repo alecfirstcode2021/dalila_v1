@@ -16,6 +16,7 @@ class Login extends Component {
       errors: {}
     };
   }
+
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
@@ -25,6 +26,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/dashboard'); // push user to dashboard when they login
+      window.location.reload();
     }
     if (nextProps.errors) {
       this.setState({
@@ -36,6 +38,7 @@ class Login extends Component {
   onChangeLogin = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
+
   loginSubmit = e => {
     e.preventDefault();
     const userData = {
@@ -48,13 +51,16 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     return (
+      <div className="bigcontainerLogin">
+      <iframe src='https://my.spline.design/setuppage1-26562f0bef0903cde358c90d8096b926/' frameborder='0' width='100%' height='100%' title="Background with a bed and a computer"></iframe>
+        <div className ="contentcontainerLogin">
       <section className="login">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
               <div className="login-left">
                 <h4 className="text-capitalize">
-                  Please login to enjoy <kbd>DALILA</kbd>
+                  Please login to enjoy <kbd>Dalila</kbd>
                 </h4>
               </div>
             </div>
@@ -90,7 +96,7 @@ class Login extends Component {
                       <input
                         type="password"
                         className="input-control"
-                        placeholder="Enter your password"
+                        placeholder="Enter your password"   
                         id="password"
                         value={password}
                         onChange={this.onChangeLogin}
@@ -115,10 +121,11 @@ class Login extends Component {
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-12">
-                      <p>
+                      <p class="text-dark">
                         Don't have an account?
+                        <br></br>
                         <Link to="/register" className="text-success">
-                           Create one!
+                            Create one!
                         </Link>
                       </p>
                     </div>
@@ -129,6 +136,8 @@ class Login extends Component {
           </div>
         </div>
       </section>
+      </div>
+      </div>
     );
   }
 }
